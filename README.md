@@ -13,7 +13,7 @@ ExportName | String (filename.xlsx)
 
 ESXiUsername | String ("root")
 
-ESXiServer | Hostname / IP Address ("192.168.1.1")
+ESXiServer | Hostname / IP Address of ESXi or vSphere ("192.168.1.1")
 
 GenerateEncPWD | Boolean ($true, $false)
 
