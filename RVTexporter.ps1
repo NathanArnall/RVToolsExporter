@@ -3,7 +3,7 @@ $ExportDir = "$env:HOMEPATH\Documents\RVTools Reports" # Directory of the file y
 $ExportName = "RVTools_Export.xlsx" # Name of the file that gets exported. Leave .xlsx at the end.
 $ESXiUsername = "" # Username used to log into vSphere
 $ESXiServer = "" # Server IP Address or Hostname.
-$GenerateEncPWD = $false # Set to $true if you want to ask for the password each time. Leave as $false and set $EncPWD for scripting and automating.
+$GenerateEncPWD = $true # Set to $true if you want to ask for the password each time. Leave as $false and set $EncPWD for scripting and automating.
 $EncPWD = "" # Required if $GenerateEncPWD = $false. Encrypted Password from RVTools password encyption powershell script, or remove the comment from the following code on $set-clipboard (line 24) and set generate password to $true to use the same script.
 if ($GenerateEncPWD -eq $true){
         # Script:    RVToolsPasswordEncryption.ps1
@@ -18,13 +18,11 @@ if ($GenerateEncPWD -eq $true){
         # Prefix the encrypted password with the string "_RVToolsV3PWD" so that RVTools understands what needs to be done
         $encryptedpwd = '_RVToolsV3PWD' + $encryptedpwd
         #==================================================================
-
+        
     # Set $EncPWD to finished password.
     $EncPWD = $encryptedpwd
     #set-clipboard "$EncPWD" # Remove comment to set the clipboard to use the password in the $EncPWD variable if you need to generate one.
-
 }
-
 $RVToolsArguments = ".\RVTools.exe -s $ESXiServer -u $ESXiUsername -p $EncPWD -c ExportAll2xlsx -d '$ExportDir' -f $ExportName" # Command that gets invoked. Unable to pass through the string into the command without invoking.
 function ExportRV() {
     if (Test-Path $ExportDir) {
