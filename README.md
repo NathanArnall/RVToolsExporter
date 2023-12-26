@@ -1,5 +1,5 @@
 # RVToolsExporter
-Powershell script to generate RVTools excel export with customizable options
+Powershell script to generate RVTools excel export with customizable options. Intended to be used alongside another excel document.
 
 To make it task scheduler/script ready, make sure all variables are set and all paths and permissions are correct.
 
